@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">VECİZELER</string>
+    <string name="title_activity_main">VECİZELER</string>
+    <string name="package_name">com.risaleinur.vecizeler</string>
+    <string name="custom_url_scheme">com.risaleinur.vecizeler</string>
+</resources>

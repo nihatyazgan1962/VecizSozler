@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="VECİZELER - Kur'an-ı Kerim Ayetleri, Hadis-i Şerifler ve Risale-i Nur Külliyatı'ndan Hikmetli Sözler, Tam Ekran Kartlar, Font & Renk Özelleştirme ve Sosyal Medya Paylaşımı.">
+  <title>VECİZELER | Kur'an-ı Kerim, Hadis-i Şerif ve Risale-i Nur</title>
+  
+  <!-- Google Fonts: Amiri, Scheherazade New, Playfair Display, Cinzel, Montserrat, Caveat, Cormorant Garamond, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400..700&family=Cinzel:wght@400..800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Decorative background mesh -->
+  <div class="bg-pattern" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="container header-content">
+      <div class="brand">
+        <div class="brand-emblem">
+          <svg viewBox="0 0 48 48" class="emblem-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="#082216"/>
+            <rect x="2" y="2" width="44" height="44" rx="10" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="3 2" />
+            <polygon points="24,6 29,18 42,19 32,28 35,41 24,34 13,41 16,28 6,19 19,18" stroke="url(#goldGrad)" stroke-width="1.2" fill="none" opacity="0.6"/>
+            <circle cx="24" cy="24" r="7" fill="url(#goldGrad)" opacity="0.25"/>
+            <path d="M24 17v14M17 24h14" stroke="url(#goldGrad)" stroke-width="1.4" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FDF0CD" />
+                <stop offset="0.5" stop-color="#D4AF37" />
+                <stop offset="1" stop-color="#996E10" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">VECİZELER</h1>
+          <p class="brand-subtitle">Kur'an-ı Kerim &bull; Hadis-i Şerif &bull; Risale-i Nur</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Fullscreen story viewer trigger -->
+        <button id="openFullscreenFeedBtn" class="action-btn fullscreen-nav-btn" title="Tam Ekran Kart Görünümü" aria-label="Tam Ekran Görünüm">
+          <span class="btn-icon">⛶</span>
+          <span class="btn-text">Tam Ekran</span>
+        </button>
+
+        <!-- Font Boyutu -->
+        <div class="font-resizer" role="group" aria-label="Yazı boyutu">
+          <button id="fontDecBtn" title="Yazıyı küçült" aria-label="Yazı boyutunu küçült">A-</button>
+          <button id="fontResetBtn" title="Varsayılan yazı boyutu" aria-label="Varsayılan yazı boyutu">A</button>
+          <button id="fontIncBtn" title="Yazıyı büyüt" aria-label="Yazı boyutunu büyüt">A+</button>
+        </div>
+
+        <!-- Tema Değiştirici -->
+        <button id="themeToggleBtn" class="action-btn theme-btn" title="Temayı değiştir" aria-label="Açık/Koyu tema değiştir">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Global Customization Floating Bar (Font & Yazı Rengi Seçici) -->
+  <section class="customizer-bar-wrap">
+    <div class="container customizer-bar">
+      <div class="customizer-group">
+        <label for="globalFontSelect" class="custom-label">
+          <span class="label-icon">🔤</span> Font:
+        </label>
+        <select id="globalFontSelect" class="custom-select" aria-label="Yazı Fontu Seçin">
+          <option value="'Amiri', serif" selected>Amiri (Zarif Hat &amp; Klasik)</option>
+          <option value="'Scheherazade New', serif">Şehrazat (Osmanlı Hat)</option>
+          <option value="'Playfair Display', serif">Playfair (Asil Serif)</option>
+          <option value="'Cinzel', serif">Cinzel (Görkemli Klasik)</option>
+          <option value="'Montserrat', sans-serif">Montserrat (Modern Net)</option>
+          <option value="'Caveat', cursive">Caveat (Samimi El Yazısı)</option>
+          <option value="'Cormorant Garamond', serif">Garamond (Kitap Klasik)</option>
+          <option value="'Outfit', sans-serif">Outfit (Çağdaş Düz)</option>
+        </select>
+      </div>
+
+      <div class="customizer-group">
+        <span class="custom-label">
+          <span class="label-icon">🎨</span> Yazı Rengi:
+        </span>
+        <div class="color-palette" id="globalColorPalette" role="radiogroup" aria-label="Yazı Rengi Seçin">
+          <button class="color-swatch-btn active" data-color="#ffffff" style="background: #ffffff;" title="Saf Beyaz" aria-label="Saf Beyaz"></button>
+          <button class="color-swatch-btn" data-color="#f4dc81" style="background: #f4dc81;" title="Altın Sarısı" aria-label="Altın Sarısı"></button>
+          <button class="color-swatch-btn" data-color="#fff9e6" style="background: #fff9e6;" title="Krem İnci" aria-label="Krem İnci"></button>
+          <button class="color-swatch-btn" data-color="#2ecc71" style="background: #2ecc71;" title="Zümrüt Yeşili" aria-label="Zümrüt Yeşili"></button>
+          <button class="color-swatch-btn" data-color="#74b9ff" style="background: #74b9ff;" title="Buz Mavisi" aria-label="Buz Mavisi"></button>
+          <button class="color-swatch-btn" data-color="#fab1a0" style="background: #fab1a0;" title="Gül Kurusu" aria-label="Gül Kurusu"></button>
+          <button class="color-swatch-btn" data-color="#81ecec" style="background: #81ecec;" title="Turkuaz Işıltı" aria-label="Turkuaz Işıltı"></button>
+          <div class="custom-color-picker-wrap" title="Özel Renk Seç">
+            <input type="color" id="customColorPicker" value="#ffffff" aria-label="Özel Renk Seç">
+            <span class="picker-plus">+</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="customizer-group">
+        <label for="globalVoiceSelect" class="custom-label">
+          <span class="label-icon">🎙️</span> Ses:
+        </label>
+        <select id="globalVoiceSelect" class="custom-select" aria-label="Okuma Sesi Seçin">
+          <option value="male_deep" selected>🔊 Tok &amp; Kalın Erkek (Vakarlı)</option>
+          <option value="male_natural">🎙️ Doğal Erkek (Akıcı Anlatıcı)</option>
+          <option value="female_soft">🌸 Zarif Hanım (Sakin &amp; Yumuşak)</option>
+          <option value="female_clear">✨ Net Hanım (Canlı)</option>
+          <option value="meditation">🌙 Derin Tefekkür (Ağır &amp; Bas)</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Hero / Featured Quote Section -->
+    <section class="hero-section" aria-label="Öne Çıkan Hikmet">
+      <div class="featured-card" id="featuredCard">
+        <div class="featured-badge" id="featuredSourceBadge">
+          <span class="star-icon">✦</span>
+          <span id="featuredBadgeText">GÜNÜN HİKMET DAMLASI</span>
+          <span class="star-icon">✦</span>
+        </div>
+        
+        <div class="quote-ornament top-ornament" aria-hidden="true">“</div>
+        
+        <blockquote class="featured-quote" id="featuredQuoteText">
+          "Güzel gören güzel düşünür. Güzel düşünen, hayatından lezzet alır."
+        </blockquote>
+        
+        <div class="featured-meta">
+          <div class="featured-source" id="featuredQuoteSource">
+            <span class="source-icon" id="featuredSourceIcon">📖</span>
+            <span id="featuredSourceText">Mektubat &bull; Hakikat Çekirdekleri</span>
+          </div>
+          <span class="category-tag" id="featuredCategoryTag">Sabır, Şükür &amp; Tevekkül</span>
+        </div>
+
+        <div class="featured-actions">
+          <button id="featuredFullscreenBtn" class="btn btn-gold" title="Tam Ekran Göster">
+            <span class="btn-icon">⛶</span> Tam Ekran
+          </button>
+          <button id="speakFeaturedBtn" class="btn btn-outline tts-btn" title="Vecizeyi Sesli Oku">
+            <span class="btn-icon">🔊</span> <span class="tts-label">Sesli Dinle</span>
+          </button>
+          <button id="randomQuoteBtn" class="btn btn-outline" title="Rastgele Başka Bir Hikmet Getir">
+            <span class="btn-icon">↻</span> Başka Getir
+          </button>
+          <button id="cardModalBtn" class="btn btn-outline" title="Görsel Kart Oluştur &amp; İndir / Paylaş">
+            <span class="btn-icon">🖼️</span> Kart Paylaş
+          </button>
+          <button id="copyFeaturedBtn" class="btn btn-outline" title="Panoya Kopyala">
+            <span class="btn-icon">📋</span> Kopyala
+          </button>
+          <button id="favFeaturedBtn" class="btn btn-icon-only" title="Favorilere Ekle / Çıkar" aria-label="Favorilere ekle">
+            <span class="fav-icon">♡</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Source Type Selector (Kur'an, Hadis, Risale-i Nur, Tümü) -->
+    <section class="source-type-section" aria-label="Kaynak Filtresi">
+      <div class="source-pills" id="sourceTypePills">
+        <button class="source-pill active" data-source="all">
+          <span class="pill-icon">🌟</span>
+          <span class="pill-title">Tümü</span>
+        </button>
+        <button class="source-pill" data-source="risale">
+          <span class="pill-icon">📖</span>
+          <span class="pill-title">Risale-i Nur</span>
+        </button>
+        <button class="source-pill" data-source="kuran">
+          <span class="pill-icon">🕋</span>
+          <span class="pill-title">Kur'an-ı Kerim</span>
+        </button>
+        <button class="source-pill" data-source="hadis">
+          <span class="pill-icon">📜</span>
+          <span class="pill-title">Hadis-i Şerif</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Search and Topic Categories -->
+    <section class="controls-section">
+      <div class="search-bar-wrap">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input 
+          type="search" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Vecize, ayet veya hadis ara (kelime, konu, sure, kitap örn: sabır, namaz, Sözler, Bakara)..." 
+          autocomplete="off"
+          aria-label="Arama kutusu"
+        >
+        <button id="clearSearchBtn" class="clear-search-btn" title="Aramayı temizle" style="display: none;">✕</button>
+      </div>
+
+      <!-- Categories Pills (Konu Başlıkları) -->
+      <nav class="categories-nav" aria-label="Konu Başlıkları">
+        <div class="category-pills" id="categoryPills">
+          <!-- Populated dynamically with all categories -->
+        </div>
+      </nav>
+
+      <!-- Results Stats Bar & Tab Selector -->
+      <div class="results-bar">
+        <div class="results-count" id="resultsCount">Listeleniyor...</div>
+        <div class="results-filters">
+          <button id="favoritesTabBtn" class="filter-tab-btn">
+            <span>❤️ Favorilerim</span>
+            <span class="fav-counter-badge" id="favBadge">0</span>
+          </button>
+          <button id="allQuotesTabBtn" class="filter-tab-btn active">
+            <span>Tümü</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quotes Grid (Tam ekran kart tasarımı ile) -->
+    <section class="quotes-section">
+      <div class="quotes-grid" id="quotesGrid" role="feed" aria-busy="false">
+        <!-- Quotes rendered dynamically -->
+      </div>
+      <div id="noResults" class="no-results" style="display: none;">
+        <div class="no-results-icon">📖</div>
+        <h3>Aradığınız kriterlere uygun kayıt bulunamadı</h3>
+        <p>Arama terimini değiştirerek veya filtreleri sıfırlayarak tekrar deneyebilirsiniz.</p>
+        <button id="resetFiltersBtn" class="btn btn-gold">Filtreleri Sıfırla</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- FULLSCREEN IMMERSIVE CARD VIEWER (TAM EKRAN KART MODU) -->
+  <!-- ========================================================================= -->
+  <div class="fullscreen-viewer" id="fullscreenViewer" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="fs-backdrop"></div>
+    
+    <!-- Top Navigation Bar -->
+    <header class="fs-header">
+      <div class="fs-info">
+        <span class="fs-source-badge" id="fsSourceBadge">📖 Risale-i Nur</span>
+        <span class="fs-category-badge" id="fsCategoryBadge">İman &amp; Tevhid</span>
+      </div>
+      <div class="fs-actions-top">
+        <span class="fs-counter" id="fsCounter">1 / 150</span>
+        <button id="fsCloseBtn" class="fs-btn-icon" title="Tam Ekrandan Çık" aria-label="Kapat">✕</button>
+      </div>
+    </header>
+
+    <!-- Center Card View Area with Gesture & Arrow Navigation -->
+    <div class="fs-body" id="fsSwipeArea">
+      <button class="fs-nav-arrow fs-prev-btn" id="fsPrevBtn" title="Önceki Kart" aria-label="Önceki">❮</button>
+      
+      <div class="fs-card" id="fsActiveCard">
+        <div class="fs-quote-ornament">“</div>
+        <div class="fs-quote-text" id="fsQuoteText">
+          "İman hem nurdur, hem kuvvettir. Evet, hakikî imanı elde eden adam, kâinata meydan okuyabilir."
+        </div>
+        <div class="fs-quote-source" id="fsQuoteSource">
+          Sözler &bull; 23. Söz
+        </div>
+        <div class="fs-quote-wisdom" id="fsQuoteWisdom">
+          İman insana sınırsız bir mânevî cesaret ve sarsılmaz bir emniyet kazandırır.
+        </div>
+      </div>
+
+      <button class="fs-nav-arrow fs-next-btn" id="fsNextBtn" title="Sonraki Kart" aria-label="Sonraki">❯</button>
+    </div>
+
+    <!-- Bottom Action & Sharing Bar -->
+    <footer class="fs-footer">
+      <div class="fs-action-row">
+        <button id="fsSpeakBtn" class="fs-action-pill fs-pill-speak" title="Vecizeyi Sesli Oku">
+          <span class="btn-icon" id="fsSpeakIcon">🔊</span> <span id="fsSpeakLabel">Sesli Dinle</span>
+        </button>
+        <button id="fsSaveGalleryBtn" class="fs-action-pill fs-pill-gold" title="Galeriye Kaydet">
+          <span class="btn-icon">📥</span> Galeriye Kaydet
+        </button>
+        <button id="fsShareWaBtn" class="fs-action-pill fs-pill-whatsapp" title="WhatsApp ile Paylaş">
+          <span class="btn-icon">💬</span> WhatsApp
+        </button>
+        <button id="fsShareIgBtn" class="fs-action-pill fs-pill-instagram" title="Instagram ile Paylaş">
+          <span class="btn-icon">📸</span> Instagram
+        </button>
+        <button id="fsShareFbBtn" class="fs-action-pill fs-pill-facebook" title="Facebook ile Paylaş">
+          <span class="btn-icon">📘</span> Facebook
+        </button>
+        <button id="fsShareNativeBtn" class="fs-action-pill fs-pill-share" title="Diğer Paylaş">
+          <span class="btn-icon">📲</span> Paylaş
+        </button>
+        <button id="fsCopyBtn" class="fs-action-pill fs-pill-copy" title="Panoya Kopyala">
+          <span class="btn-icon">📋</span> Kopyala
+        </button>
+        <button id="fsFavBtn" class="fs-btn-icon fs-fav-btn" title="Favorilere Ekle / Çıkar" aria-label="Favori">
+          <span id="fsFavIcon">♡</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- HIGH RESOLUTION CARD IMAGE GENERATOR MODAL (GÖRSEL KART OLUŞTURUCU) -->
+  <!-- ========================================================================= -->
+  <div class="modal-backdrop" id="cardModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h2 id="modalTitle" class="modal-title">Görsel Kart İndir &amp; Paylaş</h2>
+          <p class="modal-subtitle">Sosyal medya formatında yüksek kaliteli görsel üretin</p>
+        </div>
+        <button id="closeModalBtn" class="close-btn" aria-label="Kapat">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Canvas Preview Area -->
+        <div class="canvas-container">
+          <canvas id="quoteCanvas" width="1080" height="1080"></canvas>
+        </div>
+
+        <!-- Customizer Tools -->
+        <div class="card-options">
+          <!-- Format Seçimi (Kare 1:1 veya Hikaye 9:16) -->
+          <div class="option-row">
+            <label class="option-label">Kart Formatı:</label>
+            <div class="format-toggle-group">
+              <button class="format-btn active" data-format="square" id="formatSquareBtn">
+                <span>🔲 Kare (1:1 Gönderi)</span>
+              </button>
+              <button class="format-btn" data-format="story" id="formatStoryBtn">
+                <span>📱 Hikaye (9:16 Story / Durum)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Çiçek & Gül Deseni Seçimi -->
+          <div class="option-row">
+            <label class="option-label">🌹 Kenar Çiçek &amp; Gül Deseni:</label>
+            <div class="floral-picker" id="floralPatternPicker">
+              <button class="floral-btn active" data-floral="rose_vines" title="Gül &amp; Altın Sarmaşık">
+                <span>🌹 Gül &amp; Sarmaşık</span>
+              </button>
+              <button class="floral-btn" data-floral="ottoman_tezhip" title="Osmanlı Tezhib &amp; Çiçekler">
+                <span>🌸 Klasik Tezhip</span>
+              </button>
+              <button class="floral-btn" data-floral="gold_tulips" title="Altın Lale &amp; Karanfil">
+                <span>🌷 Altın Lale</span>
+              </button>
+              <button class="floral-btn" data-floral="floral_wreath" title="Zarif Çiçek Çelengi &amp; Taç">
+                <span>🌿 Bahar Çelengi</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tema & Zemin Deseni -->
+          <div class="option-row">
+            <label class="option-label">Kart Teması &amp; Deseni:</label>
+            <div class="theme-picker" id="cardThemePicker">
+              <button class="theme-color-btn active" data-style="emerald" style="background: linear-gradient(135deg, #061e14, #0f3d2b);" title="Zümrüt Saray &amp; Gül"></button>
+              <button class="theme-color-btn" data-style="midnight" style="background: linear-gradient(135deg, #091424, #132a4a);" title="Gece Mavisi &amp; Çiçek"></button>
+              <button class="theme-color-btn" data-style="obsidian" style="background: linear-gradient(135deg, #121212, #232323);" title="Obsidyen &amp; 24K Altın Gül"></button>
+              <button class="theme-color-btn" data-style="parchment" style="background: linear-gradient(135deg, #fbf7ee, #e9ddc4);" title="Antik Parşömen &amp; Gül"></button>
+              <button class="theme-color-btn" data-style="ruby" style="background: linear-gradient(135deg, #2b080d, #57111a);" title="Yakut Kırmızı &amp; Gül"></button>
+              <button class="theme-color-btn" data-style="turquoise" style="background: linear-gradient(135deg, #052125, #0f464c);" title="İznik Çinisi &amp; Çiçek"></button>
+            </div>
+          </div>
+
+          <!-- Modal Font ve Renk Kontrolü -->
+          <div class="option-row modal-font-color-row">
+            <div class="sub-option">
+              <label for="modalFontSelect" class="option-label">Font:</label>
+              <select id="modalFontSelect" class="custom-select modal-select">
+                <option value="'Amiri', serif">Amiri (Zarif Hat)</option>
+                <option value="'Scheherazade New', serif">Şehrazat (Osmanlı)</option>
+                <option value="'Playfair Display', serif">Playfair (Serif)</option>
+                <option value="'Cinzel', serif">Cinzel (Görkemli)</option>
+                <option value="'Montserrat', sans-serif">Montserrat (Net Sans)</option>
+                <option value="'Caveat', cursive">Caveat (El Yazısı)</option>
+                <option value="'Cormorant Garamond', serif">Garamond (Kitap)</option>
+                <option value="'Outfit', sans-serif">Outfit (Çağdaş)</option>
+              </select>
+            </div>
+
+            <div class="sub-option">
+              <label class="option-label">Yazı Rengi:</label>
+              <div class="modal-color-picker" id="modalColorPalette">
+                <button class="color-swatch-btn active" data-color="#ffffff" style="background: #ffffff;" title="Beyaz"></button>
+                <button class="color-swatch-btn" data-color="#f4dc81" style="background: #f4dc81;" title="Altın"></button>
+                <button class="color-swatch-btn" data-color="#fff9e6" style="background: #fff9e6;" title="Krem"></button>
+                <button class="color-swatch-btn" data-color="#2ecc71" style="background: #2ecc71;" title="Yeşil"></button>
+                <button class="color-swatch-btn" data-color="#74b9ff" style="background: #74b9ff;" title="Mavi"></button>
+                <button class="color-swatch-btn" data-color="#fab1a0" style="background: #fab1a0;" title="Gül"></button>
+              </div>
+            </div>
+          </div>
+
+          <p class="modal-tip">💡 <strong>Hedef:</strong> Kart telefonunuzda doğrudan <strong>"Galeri / Resimler"</strong> albümüne; bilgisayarda ise <strong>"Resimler"</strong> klasörüne ultra HD netliğinde kaydedilir.</p>
+
+          <!-- Sosyal Medya & İndirme Aksiyonları -->
+          <div class="modal-actions social-action-grid">
+            <button id="downloadCardBtn" class="btn btn-gold btn-main-action">
+              <span class="btn-icon">📥</span> Galeriye / Resimler'e İndir
+            </button>
+            <button id="shareWaBtn" class="btn btn-whatsapp">
+              <span class="btn-icon">💬</span> WhatsApp
+            </button>
+            <button id="shareIgBtn" class="btn btn-instagram">
+              <span class="btn-icon">📸</span> Instagram
+            </button>
+            <button id="shareFbBtn" class="btn btn-facebook">
+              <span class="btn-icon">📘</span> Facebook
+            </button>
+            <button id="shareNativeBtn" class="btn btn-share">
+              <span class="btn-icon">📲</span> Diğer Paylaş
+            </button>
+            <button id="openCardTabBtn" class="btn btn-outline">
+              <span class="btn-icon">👁️</span> Resmi Aç
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Bildirimi -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <span id="toastIcon">✔</span>
+    <span id="toastMessage">İşlem başarılı!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <p class="footer-quote">"Kimin himmeti milleti ise, o kimse tek başıyla bir millettir."</p>
+      <div class="footer-links">
+        <span>VECİZELER &bull; Kur'an-ı Kerim, Hadis-i Şerif ve Risale-i Nur Hikmet Kütüphanesi</span>
+        <span class="sep">&bull;</span>
+        <a href="VECIZ_SOZLER.md" target="_blank" class="footer-link">Metin Kaynağı</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
